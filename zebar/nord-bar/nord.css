@@ -1,0 +1,234 @@
+/**
+ * Nord theme for the Zebar starter "with-glazewm" widget.
+ *
+ * Standalone replacement for styles.css. To roll back, point the <link> in
+ * with-glazewm.html back to ./styles.css (the original is left untouched).
+ *
+ * Palette: https://www.nordtheme.com/docs/colors-and-palettes
+ * To retheme, change only the "Roles" variables below.
+ */
+
+/* Nerd Fonts icon font. Cheat sheet: https://www.nerdfonts.com/cheat-sheet */
+@import 'https://www.nerdfonts.com/assets/css/webfont.css';
+
+:root {
+  color-scheme: dark;
+
+  --text-size: 12px;
+  --icon-size: 13px;
+
+  /* Nord palette */
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+
+  /* Roles (high-contrast idea: --bar-bg #000, --text #fff, --accent #ffd60a) */
+  --bar-bg: rgb(46 52 64 / 95%);
+  --bar-border: var(--nord3);
+  --text: var(--nord4);
+  --text-strong: var(--nord6);
+  --icon: var(--nord9);
+  --chip-bg: var(--nord1);
+  --chip-bg-other-monitor: var(--nord3);
+  --chip-bg-hover: var(--nord9);
+  --accent: var(--nord8);
+  --on-accent: var(--nord0);
+  --mode: var(--nord12);
+  --danger: var(--nord11);
+}
+
+/* ---- Base ---------------------------------------------------------------- */
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  color: var(--text);
+  font-family: ui-monospace, monospace;
+  font-size: var(--text-size);
+  overflow: hidden;
+}
+
+div,
+span,
+p {
+  cursor: default;
+  user-select: none;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+i {
+  color: var(--icon);
+  margin-right: 7px;
+  font-size: var(--icon-size);
+}
+
+#root {
+  background: var(--bar-bg);
+  border-bottom: 1px solid var(--bar-border);
+}
+
+/* ---- Layout -------------------------------------------------------------- */
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 100%;
+  padding: 4px 1.5vw;
+}
+
+.left,
+.center,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  justify-self: center;
+  color: var(--text-strong);
+}
+
+.right {
+  justify-self: end;
+}
+
+.logo,
+.binding-mode,
+.tiling-direction,
+.paused-button,
+.network,
+.memory,
+.cpu,
+.battery {
+  margin-right: 20px;
+}
+
+/* ---- Workspaces ---------------------------------------------------------- */
+
+.workspaces {
+  display: flex;
+  align-items: center;
+}
+
+.workspace {
+  background: var(--chip-bg);
+  margin-right: 4px;
+  padding: 4px 8px;
+  color: var(--text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background 120ms,
+    color 120ms;
+}
+
+/* Shown on another monitor. */
+.workspace.displayed {
+  background: var(--chip-bg-other-monitor);
+}
+
+.workspace:hover {
+  background: var(--chip-bg-hover);
+  color: var(--on-accent);
+}
+
+/* Keep last so the focused workspace wins over hover. */
+.workspace.focused {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* ---- GlazeWM state buttons ----------------------------------------------- */
+
+.binding-mode,
+.tiling-direction,
+.paused-button {
+  background: var(--nord3);
+  color: var(--text-strong);
+  border-radius: 4px;
+  line-height: 1;
+  padding: 4px 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+/* A leader chord (alt+g, alt+shift+g, resize) is waiting for a key. */
+.binding-mode {
+  background: var(--mode);
+  color: var(--on-accent);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* GlazeWM is paused (alt+shift+p). */
+.paused-button {
+  background: var(--danger);
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+/* ---- Modules ------------------------------------------------------------- */
+
+.logo {
+  color: var(--accent);
+}
+
+.network i {
+  color: var(--nord7);
+}
+
+.memory i {
+  color: var(--nord15);
+}
+
+.cpu i {
+  color: var(--nord14);
+}
+
+.cpu .high-usage {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.battery {
+  position: relative;
+}
+
+.battery i {
+  color: var(--nord13);
+}
+
+.battery .charging-icon {
+  position: absolute;
+  font-size: 7px;
+  left: -8px;
+  top: 3px;
+}
+
+.weather i {
+  color: var(--accent);
+}

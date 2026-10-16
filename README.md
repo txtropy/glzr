@@ -67,3 +67,10 @@ Examples: `alt+g`, `c`, `2` goes to `code2`. `alt+g`, `h` goes to `chat`. `alt+s
 | `alt+shift+w` | Redraw all windows |
 | `alt+shift+r` | Reload config |
 | `ctrl+alt+shift+e` | Exit GlazeWM |
+
+## 4. Zebar Styling (minimal)
+
+**Zebar bar.** The bar is a separate widget pack, so its colors are not set by `config.yaml`. The pack lives in its own folder and is selected in Zebar's `settings.json`.
+
+How to set up:
+> Copy and paste these two files: html template `.\zebar\nord-bar\with-glazewm.html` & stylesheet `.\zebar\nord-bar\nord.css` to the following path `%APPDATA%\zebar\downloads\glzr-io.starter@0.0.0` or wherever your zebar widget pack lives.
