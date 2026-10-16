@@ -1,0 +1,38 @@
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Shell and application history
+.bash_history
+.zsh_history
+.python_history
+.node_repl_history
+
+# Secrets, credentials, and private keys
+.env
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.secret
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local-only overrides (if you use custom local scripts)
+*.local
+
+# Log files
+*.log
+.marketplace/
